@@ -49,10 +49,18 @@ def dataPreprocessing(dataFrames):
     # Debug statements
     # print(data.shape)
     # print(data.head())
+    # Represented as a ratio less than 1 features
     createNewFeaturesByRatio("Annual CO2 Mean", "Annual CH4 Mean", data)
     createNewFeaturesByRatio("Annual N2O Mean", "Annual CO2 Mean", data)
     createNewFeaturesByRatio("Annual N2O Mean", "Annual CH4 Mean", data)
     createNewFeaturesByRatio("Annual CO2 Concentration Mean", "Annual CO2 Mean", data)
+
+    # Represented as a ratio greater than 1 features
+    createNewFeaturesByRatio("Annual CH4 Mean", "Annual CO2 Mean", data)
+    createNewFeaturesByRatio("Annual CO2 Mean", "Annual N2O Mean", data)
+    createNewFeaturesByRatio("Annual CH4 Mean", "Annual N2O Mean", data)
+    createNewFeaturesByRatio("Annual CO2 Mean", "Annual CO2 Concentration Mean", data)
+
     createNewFeaturesByMult('TSI', 'TSI_UNC', data)
     data.to_csv('data.csv', index=False)
     # Debug statement

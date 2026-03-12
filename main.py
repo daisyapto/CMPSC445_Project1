@@ -12,7 +12,7 @@ def main():
     dp = dataPreprocessing(dc)
     md = modelDevelopment(dp)
     fr = featureRank(md)
-    dv = dataVisualization(fr)
+    #dv = dataVisualization(fr)
 
 if __name__ == '__main__':
     main()
