@@ -8,3 +8,5 @@ Created data.csv with data obtained from the following links:
 - https://ourworldindata.org/grapher/co2-long-term-concentration?overlay=download-data
 
 *Note: The created data.csv includes the data collection of the csv files, merging them, and simple data preprocessing. The data.csv is unscaled data. Scaling occurs after the merged data is already saved into data.csv.
+
+A full report of this project with references can be viewed in the CMPSC445_Project1_Report.pdf file.
