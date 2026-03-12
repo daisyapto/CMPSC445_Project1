@@ -5,10 +5,12 @@ def dataVisualization(fr):
     r2 = fr[1]
     mse2 = fr[2]
     r2_2 = fr[3]
-    data = fr[4]
-    all_features = fr[5]
-    feature_ranking = fr[6]
-    feature_names = fr[7]
+    mse3 = fr[4]
+    r2_3 = fr[5]
+    data = fr[6]
+    all_features = fr[7]
+    feature_ranking = fr[8]
+    feature_names = fr[9]
 
     plotData1 = data[data['Annual CH4 Mean'] != 1783.2539024390244] # all data that was not filled in the mean (the blanks)
     plt.plot(plotData1['Year'], plotData1['Annual CH4 Mean'])
@@ -38,8 +40,8 @@ def dataVisualization(fr):
     plt.ylabel("Annual CO2 Mean")
     plt.show()
 
-    plt.plot([r2, r2_2], [mse, mse2])
-    plt.title("R^2 scores vs MSE (before vs after feature ranking)")
+    plt.scatter([r2, r2_2, r2_3], [mse, mse2, mse3])
+    plt.title("No feature ranking, feature ranking, and removal of top 15 features")
     plt.xlabel("R^2 score")
     plt.ylabel("MSE")
     plt.show()

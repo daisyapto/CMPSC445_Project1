@@ -79,7 +79,7 @@ def featureRank(mod):
     feature_names2 = getTopFeatureNames(selector2, dropped)
     print(f"Top {len(feature_names2)} features (without top 15): ", feature_names2)
 
-    return mse, r2, mse2, r2_2, data, x.columns.tolist(), selector.ranking_, feature_names
+    return mse, r2, mse2, r2_2, mse3, r2_3, data, x.columns.tolist(), selector.ranking_, feature_names
 
 # Testing function
 # featureRank()
