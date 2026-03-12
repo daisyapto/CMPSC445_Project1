@@ -40,7 +40,7 @@ def dataVisualization(fr):
     plt.ylabel("Annual CO2 Mean")
     plt.show()
 
-    plt.scatter([r2, r2_2, r2_3], [mse, mse2, mse3])
+    plt.plot([r2, r2_2, r2_3], [mse, mse2, mse3])
     plt.title("No feature ranking, feature ranking, and removal of top 15 features")
     plt.xlabel("R^2 score")
     plt.ylabel("MSE")
@@ -52,7 +52,7 @@ def dataVisualization(fr):
         plt.text(i, feature_ranking[i], feature_ranking[i])
     plt.title("Feature ranking")
     plt.xlabel("Feature")
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=90, fontsize=6)
     plt.ylabel("Feature rank")
     # Google search AI Overview - how to fit all labels onto plot
     plt.tight_layout()
