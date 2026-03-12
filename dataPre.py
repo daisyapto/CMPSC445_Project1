@@ -9,6 +9,12 @@ pd.set_option('display.max_rows', None)
 # Show all columns
 pd.set_option('display.max_columns', None)
 
+def createNewFeaturesByRatio(feature1, feature2, data):
+    data[f'{feature1} / {feature2}'] = data[feature1] / data[feature2]
+
+def createNewFeaturesByMult(feature1, feature2, data):
+    data[f'{feature1} * {feature2}'] = data[feature1] * data[feature2]
+
 def dataPreprocessing(dataFrames):
     # Join all frames made in dataCollection
     data = pd.concat(dataFrames, ignore_index=True)
@@ -43,8 +49,14 @@ def dataPreprocessing(dataFrames):
     # Debug statements
     # print(data.shape)
     # print(data.head())
+    createNewFeaturesByRatio("Annual CH4 Mean", "Annual CO2 Mean", data)
+    createNewFeaturesByRatio("Annual CO2 Mean", "Annual N2O Mean", data)
+    createNewFeaturesByRatio("Annual CH4 Mean", "Annual N2O Mean", data)
+    createNewFeaturesByRatio("Annual CO2 Concentration Mean", "Annual CO2 Mean", data)
+    createNewFeaturesByMult('TSI', 'TSI_UNC', data)
     data.to_csv('data.csv', index=False)
-    # print(data)
+    # Debug statement
+    # print(data.columns)
 
     return data
 

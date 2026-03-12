@@ -33,7 +33,12 @@ def modelDevelopment(data):
               'SON (Land-Ocean Global Means)',
               'TSI',
               'TSI_UNC',
-              'Annual CO2 Concentration Mean']]
+              'Annual CO2 Concentration Mean', # Engineered feature
+              'Annual CH4 Mean / Annual CO2 Mean', # Engineered feature
+              'Annual CO2 Mean / Annual N2O Mean', # Engineered feature
+              'Annual CH4 Mean / Annual N2O Mean', # Engineered feature
+              'Annual CO2 Concentration Mean / Annual CO2 Mean', # Engineered feature
+              'TSI * TSI_UNC']] # Engineered feature
     y = data['Land-Ocean Global Mean (Jan - Dec)']
     # Debug statements
     # print(y)
