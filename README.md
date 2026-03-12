@@ -1,5 +1,5 @@
-# CMPSC445_Project1
-Identifying Root Causes of Global Temperature Change Using Multi‑Source Data Integration and Regression Feature Ranking
+## CMPSC445_Project1
+# Identifying Root Causes of Global Temperature Change Using Multi‑Source Data Integration and Regression Feature Ranking
 
 Created data.csv with data obtained from the following links:
 - https://gml.noaa.gov/ccgg/trends/
