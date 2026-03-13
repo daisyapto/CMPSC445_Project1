@@ -31,7 +31,7 @@ def featureRank(mod):
     scaler = StandardScaler()
     x_train = scaler.fit_transform(x_train)
 
-    selector = RFE(model, n_features_to_select=20)
+    selector = RFE(model, n_features_to_select=25)
     selector = selector.fit(x_train, y_train)
 
     print("Support of feature: ", selector.support_)

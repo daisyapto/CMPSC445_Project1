@@ -15,6 +15,17 @@ def createNewFeaturesByRatio(feature1, feature2, data):
 def createNewFeaturesByMult(feature1, feature2, data):
     data[f'{feature1} * {feature2}'] = data[feature1] * data[feature2]
 
+def createNewFeaturesByAdd(feature1, feature2, data):
+    data[f'{feature1} + {feature2}'] = data[feature1] + data[feature2]
+
+# Use these 2 functions to convert CO2 concentration from both sources because they are in micromols/mols and uncertanity is ppm
+# whereas the other gases are nanomols/mols and ppb
+def convertUnitFromMicroToNano(feature, data):
+    data[feature] = data[feature] * 1000
+
+def convertUnitFromPPMtoPPB(feature, data):
+    data[feature] = data[feature] / 1000
+
 def dataPreprocessing(dataFrames):
     # Join all frames made in dataCollection
     data = pd.concat(dataFrames, ignore_index=True)
@@ -50,6 +61,12 @@ def dataPreprocessing(dataFrames):
     # print(data.shape)
     # print(data.head())
     # Represented as a ratio less than 1 features
+
+    # Convert Annual CO2 Mean, Annual CO2 Concentration Mean, Annual CO2 Uncertainty
+    convertUnitFromMicroToNano('Annual CO2 Mean', data)
+    convertUnitFromPPMtoPPB('Annual CO2 Concentration Mean', data)
+    convertUnitFromPPMtoPPB('Annual CO2 Uncertainty', data)
+
     createNewFeaturesByRatio("Annual CO2 Mean", "Annual CH4 Mean", data)
     createNewFeaturesByRatio("Annual N2O Mean", "Annual CO2 Mean", data)
     createNewFeaturesByRatio("Annual N2O Mean", "Annual CH4 Mean", data)
@@ -61,7 +78,14 @@ def dataPreprocessing(dataFrames):
     createNewFeaturesByRatio("Annual CH4 Mean", "Annual N2O Mean", data)
     createNewFeaturesByRatio("Annual CO2 Mean", "Annual CO2 Concentration Mean", data)
 
+    # Another feature to see uncertainty to the TSI
     createNewFeaturesByMult('TSI', 'TSI_UNC', data)
+
+    # Combination features
+    createNewFeaturesByAdd('Annual CO2 Mean', 'Annual N2O Mean', data)
+    createNewFeaturesByAdd('Annual CH4 Mean', 'Annual N2O Mean', data)
+    createNewFeaturesByAdd('Annual CH4 Mean', 'Annual CO2 Mean', data)
+
     data.to_csv('data.csv', index=False)
     # Debug statement
     # print(data.columns)
