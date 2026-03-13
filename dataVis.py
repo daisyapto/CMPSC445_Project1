@@ -58,7 +58,7 @@ def dataVisualization(fr):
     plt.tight_layout()
     plt.show()
 
-    # Generates 80 line plots - all 20 top features mapped against the 4 gases
+    # Generates 100 line plots - all 25 top features mapped against the 4 gases
     gases = ['Annual CH4 Mean', 'Annual CO2 Mean', 'Annual N2O Mean', 'Annual CO2 Concentration Mean']
     # Plot data filters out the blanks that were filled in with the mean; filled in mean is useful for training the model but not for plotting
     plotData = [plotData1, plotData2, plotData3, plotData4]
@@ -71,7 +71,7 @@ def dataVisualization(fr):
             plt.ylabel(f"{gases[g]}")
             plt.show()
 
-    # Generates 80 scatter plots - all 20 top features mapped against the 4 gases
+    # Generates 100 scatter plots - all 25 top features mapped against the 4 gases
     for g in range(len(gases)):
         for i in range(len(feature_names)):
             data = plotData[g].sort_values(by=feature_names[i])
