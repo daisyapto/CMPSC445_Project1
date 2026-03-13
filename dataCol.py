@@ -58,6 +58,7 @@ def dataCollection():
         # print(frame)
 
         file5data = xr.open_dataset(file5)
+        # print(file5data.attrs)
         # Debug statements
         # print(file5data)
         file5data = file5data.to_dataframe()

@@ -67,17 +67,17 @@ def featureRank(mod):
     mse3 = mean_squared_error(y_test3, y_pred3)
     r2_3 = r2_score(y_test3, y_pred3)
 
-    print("MSE without top 20 features: ", mse3)
-    print("R^2 score without top 20 features: ", r2_3)
+    print(f"MSE without top {len(feature_names)} features: ", mse3)
+    print(f"R^2 score without top {len(feature_names)} features: ", r2_3)
 
     selector2 = RFE(model, n_features_to_select=5)
     selector2 = selector2.fit(x_train3, y_train3)
 
-    print("Support of features (without top 20): ", selector2.support_)
-    print("Feature ranking (without top 20): ", selector2.ranking_)
-    print("Feature names (without top 20): ", dropped.columns.tolist())
+    print(f"Support of features (without top {len(feature_names)}): ", selector2.support_)
+    print(f"Feature ranking (without top {len(feature_names)}): ", selector2.ranking_)
+    print(f"Feature names (without top {len(feature_names)}): ", dropped.columns.tolist())
     feature_names2 = getTopFeatureNames(selector2, dropped)
-    print(f"Top {len(feature_names2)} features (without top 20): ", feature_names2)
+    print(f"Top {len(feature_names2)} features (without top {len(feature_names)}): ", feature_names2)
 
     return mse, r2, mse2, r2_2, mse3, r2_3, data, x.columns.tolist(), selector.ranking_, feature_names
 
