@@ -57,6 +57,9 @@ def modelDevelopment(data):
     x_train = scaler.fit_transform(x_train)
     x_test = scaler.transform(x_test)
 
+    print(f"Data after preprocessing (unscaled):\n{data.head()}")
+    print(f"Data after preprocessing (scaled):\n{x_train[:5]}")
+
     # Debug statement
     # print(x_train.shape, y_train.shape)
     model = LinearRegression()
